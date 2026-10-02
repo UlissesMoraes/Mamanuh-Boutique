@@ -21,7 +21,8 @@ window.SITE = {
     name: "Mamanuh Boutique",
     shortName: "Mamanuh",
     /* O cadastro público registra "Mamanuh Botique". Confirmar a grafia oficial. */
-    nameConfirmed: false,
+    /* Grafia conferida no letreiro da fachada: "Mamanuh Boutique". */
+    nameConfirmed: true,
     legalName: "Dandi Comércio de Vestuário e Acessórios Ltda.",
     segment: "Roupas e acessórios",
     /* Arquivo do logotipo aprovado (ex.: "assets/img/logo.svg"). Sem logo, o nome é escrito em texto. */
@@ -30,7 +31,8 @@ window.SITE = {
 
   contact: {
     /* Somente número confirmado para WhatsApp, com DDI e DDD, só dígitos. Ex.: "5547999999999". */
-    whatsapp: null,
+    whatsapp: "5547933804112",
+    whatsappDisplay: "(47) 93380-4112",
     /* Telefone fixo do cadastro público. Não presumir que recebe WhatsApp. */
     phone: { display: "(47) 3380-4112", tel: "+554733804112", confirmed: false },
     /* Endereço completo do perfil oficial. Ex.: "https://www.instagram.com/usuario/". */

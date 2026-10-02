@@ -115,7 +115,8 @@
       ? C.hours.map(function (h) { return esc(h.days) + ": " + esc(h.time); }).join("<br>")
       : '<span class="pending">Horários</span>' + pendingTag();
     $('[data-contact="whatsapp"]').innerHTML = C.whatsapp
-      ? '<a href="' + esc(whatsappUrl(SITE.messages.general)) + '" target="_blank" rel="noopener">Iniciar conversa</a>'
+      ? '<a href="' + esc(whatsappUrl(SITE.messages.general)) + '" target="_blank" rel="noopener">' + esc(C.whatsappDisplay || "Iniciar conversa") +
+        '<span class="visually-hidden"> (abre o WhatsApp em nova aba)</span></a>'
       : '<span class="pending">Número</span>' + pendingTag();
     $('[data-contact="instagram"]').innerHTML = C.instagram
       ? '<a href="' + esc(C.instagram) + '" target="_blank" rel="noopener">' + esc(C.instagram.replace(/^https?:\/\/(www\.)?instagram\.com\//, "@").replace(/\/$/, "")) + "</a>"
