@@ -218,15 +218,33 @@
             <button class="btn btn-outline" type="button" data-consult="general">Falar com a boutique</button>
           </div>
         </div>
-        <div class="visit-map reveal" data-map>
-          <div class="map-canvas" id="mapa" role="region" aria-label="Mapa com a localização da Mamanuh Boutique"></div>
-          <!-- Mostrada até o mapa carregar, ou no lugar dele se não carregar. -->
+        <div class="visit-side reveal">
+        <div class="visit-map" data-map>
+          <!-- O Google Maps entra aqui quando a seção se aproxima da tela (js/map.js). -->
+          <div class="map-frame" data-map-frame></div>
+          <!-- Mostrada até o mapa carregar. -->
           <img class="map-fallback" src="assets/img/fachada-480.webp"
                srcset="assets/img/fachada-480.webp 480w, assets/img/fachada-900.webp 645w"
                sizes="(min-width: 840px) 50vw, 100vw"
                width="645" height="607" loading="lazy" decoding="async"
                alt="Fachada da Mamanuh Boutique: vitrine de vidro com letreiro dourado e manequins com vestidos">
-          <p class="map-note" data-map-note hidden></p>
+          <a class="map-link" data-map-link target="_blank" rel="noopener" aria-label="Abrir a localização no Google Maps (nova aba)"></a>
+          <button class="map-pin" type="button" data-map-pin aria-expanded="false" aria-controls="map-card" hidden>
+            <span class="map-pin-photo"><img src="assets/img/fachada-480.webp" alt="" width="76" height="76"></span>
+            <span class="map-pin-tail" aria-hidden="true"></span>
+            <span class="visually-hidden">Mamanuh Boutique: ver foto e endereço</span>
+          </button>
+          <div class="map-card" id="map-card" data-map-card hidden>
+            <button class="map-card-close" type="button" data-map-close aria-label="Fechar"></button>
+            <img src="assets/img/fachada-480.webp" alt="Fachada da Mamanuh Boutique" width="480" height="452">
+            <div class="map-card-body">
+              <p class="map-card-name">Mamanuh Boutique</p>
+              <p class="map-card-address" data-map-address></p>
+              <a class="map-card-link" data-map-directions target="_blank" rel="noopener">Como chegar<span class="visually-hidden"> (abre o Google Maps em nova aba)</span></a>
+            </div>
+          </div>
+        </div>
+        <p class="map-note" data-map-note hidden></p>
         </div>
       </div>
     </section>
@@ -292,7 +310,7 @@
     </div>
     <div class="container footer-base">
       <p>© <span data-year></span> Mamanuh Boutique. <span data-demo-only>Proposta de demonstração — conteúdo sujeito à aprovação.</span></p>
-      <p>Este site não usa cookies nem ferramentas de rastreamento e não coleta dados pessoais. O mapa é carregado do OpenStreetMap/CARTO quando a seção de visita aparece na tela.</p>
+      <p>Este site não usa cookies nem ferramentas de rastreamento e não coleta dados pessoais. O mapa da seção de visita é do Google Maps e só carrega quando ela se aproxima da tela; o Google aplica a própria política de privacidade.</p>
     </div>
   </footer>
 

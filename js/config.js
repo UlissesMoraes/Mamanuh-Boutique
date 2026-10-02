@@ -55,7 +55,9 @@ window.SITE = {
     map: {
       lat: -26.9063432,
       lng: -48.672717,
-      zoom: 16,
+      zoom: 17,
+      /* Texto buscado no Google Maps para centralizar o mapa. */
+      query: "Rua Heitor Liberato, 1550 - São João, Itajaí - SC",
       confirmed: false,
       /* Foto usada como marcador (arquivo em assets/img, sem o sufixo -480/-900). */
       photo: "fachada",

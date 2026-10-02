@@ -16,8 +16,7 @@ python3 -m http.server 8000   # depois abra http://localhost:8000
 | `index.html` | Estrutura das seções, SEO e dados estruturados |
 | `js/config.js` | **Tudo o que a boutique atualiza**: contatos, coleções, peças, looks, FAQ, mensagens |
 | `js/main.js` | Montagem das seções, filtros, painéis de detalhe, menu, WhatsApp |
-| `js/map.js` | Mapa da seção "Visite a loja", com a foto da fachada como marcador |
-| `assets/vendor/leaflet/` | Leaflet 1.9.4 (licença BSD-2), servido pelo próprio site |
+| `js/map.js` | Google Maps da seção "Visite a loja", com a foto da fachada como marcador |
 | `js/motion.js` | Efeitos de movimento (decorativos; o site funciona sem eles) |
 | `css/styles.css` | Tokens e estilos (design system adaptado) |
 | `assets/img/` | Fotos em WebP, duas larguras (`-480`, `-900`) |
@@ -50,11 +49,11 @@ python3 -m http.server 8000   # depois abra http://localhost:8000
 
 ## Mapa
 
-- Leaflet com o mapa claro do OpenStreetMap/CARTO; só carrega quando a seção de visita se aproxima da tela.
-- O marcador é a foto da fachada; ao clicar, abre um cartão com a foto, o endereço e "Como chegar".
-- A rolagem do mouse nunca dá zoom no mapa, e no celular o dedo continua rolando a página (zoom pelos botões + e −).
-- Se o mapa não carregar, a foto da fachada fica no lugar.
-- Coordenadas em `contact.map`. As atuais são do complexo Bistek São João (Rua Heitor Liberato, 1550); com `confirmed: false`, o mapa mostra "Localização aproximada".
+- Google Maps incorporado (sem chave de API), centralizado em `contact.map.query`; só carrega quando a seção de visita se aproxima da tela.
+- O mapa incorporado não aceita marcador próprio: ele fica parado e a foto da fachada é desenhada por cima, sobre o pino do Google.
+- Clicar no mapa abre o Google Maps; clicar na foto abre um cartão com foto, endereço e "Como chegar".
+- Para usar o ponto exato da loja, troque `query` pelo nome cadastrado no Google ou por "latitude,longitude" e defina `mapsUrl` com o link do perfil; depois `confirmed: true`.
+- Um mapa interativo (arrastar e dar zoom com o marcador acompanhando) exige a Maps JavaScript API, com chave de API do Google Cloud.
 
 ## Design system
 
