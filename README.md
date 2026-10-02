@@ -58,7 +58,7 @@ O vinho da Orluxe é a cor de marca de outra empresa, então foi trocado por gra
 - [ ] Fotos autorizadas: peças, looks, loja ou equipe, fachada
 - [ ] Catálogo real: categorias, peças, referências, cores, tamanhos, composição e preços (se forem divulgados)
 - [ ] Looks aprovados pela loja
-- [ ] Perfil oficial do Instagram
+- [x] Perfil oficial do Instagram: https://www.instagram.com/mamanuhboutique/
 - [ ] Número de WhatsApp (não presumir que o fixo (47) 3380-4112 recebe WhatsApp)
 - [ ] Endereço validado (Rua Heitor Liberato, 1550, loja 35, São João, Itajaí) e CEP; link oficial do Google Maps
 - [ ] Horários de funcionamento

@@ -34,7 +34,7 @@ window.SITE = {
     /* Telefone fixo do cadastro público. Não presumir que recebe WhatsApp. */
     phone: { display: "(47) 3380-4112", tel: "+554733804112", confirmed: false },
     /* Endereço completo do perfil oficial. Ex.: "https://www.instagram.com/usuario/". */
-    instagram: null,
+    instagram: "https://www.instagram.com/mamanuhboutique/",
     address: {
       street: "Rua Heitor Liberato, 1550, loja 35",
       district: "São João",
