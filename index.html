@@ -12,10 +12,13 @@
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Mamanuh Boutique — Itajaí">
   <meta property="og:description" content="Roupas e acessórios no bairro São João, em Itajaí. Consulte peças, tamanhos e disponibilidade com a equipe.">
-  <meta property="og:image" content="assets/img/vestido-longo-off-white-900.webp">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <link rel="preload" href="assets/fonts/Italiana-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/Poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23faf8f4'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' text-anchor='middle' fill='%232b2a28'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/styles.css">
   <script>document.documentElement.classList.add('js');</script>
   <!-- Dados de cadastro público, pendentes de validação antes da publicação. -->
@@ -45,7 +48,10 @@
 
   <header class="site-header" id="topo">
     <div class="container header-inner">
-      <a class="wordmark" href="#inicio" aria-label="Mamanuh Boutique, voltar ao início" data-brand-mark>Mamanuh</a>
+      <a class="wordmark" href="#inicio" aria-label="Mamanuh Boutique, voltar ao início" data-mono-hover>
+        <span class="wordmark-mono" data-mono="ink" data-mono-weight="1.9"></span>
+        <span class="wordmark-text" aria-hidden="true">Mamanuh</span>
+      </a>
 
       <nav class="nav-desktop" aria-label="Principal">
         <ul>
@@ -276,6 +282,7 @@
     <!-- 9. Encerramento -->
     <section class="closing" aria-labelledby="closing-title">
       <div class="container closing-inner">
+        <div class="closing-mono" data-mono="copper" data-mono-draw="view"></div>
         <h2 class="display-lg" id="closing-title" data-split>Gostou de uma peça?</h2>
         <p class="reveal">Converse com a equipe para consultar tamanhos, cores e disponibilidade.</p>
         <button class="btn btn-inverse reveal" type="button" data-consult="general">Falar com a boutique</button>
@@ -286,7 +293,10 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <p class="footer-mark" data-brand-mark>Mamanuh</p>
+        <div class="footer-brand" data-mono-hover>
+          <span class="footer-mono" data-mono="copper-deep" data-mono-weight="1.4"></span>
+          <p class="footer-mark">Mamanuh <span>Boutique</span></p>
+        </div>
         <p class="footer-note">Roupas e acessórios em Itajaí, SC.</p>
       </div>
       <div>
@@ -343,6 +353,7 @@
   </dialog>
 
   <script src="js/config.js"></script>
+  <script src="js/logo.js"></script>
   <script src="js/motion.js"></script>
   <script src="js/map.js"></script>
   <script src="js/main.js"></script>

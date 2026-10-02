@@ -237,7 +237,8 @@
     init: function () {
       $$("[data-split]").forEach(splitWords);
       requestAnimationFrame(function () { document.documentElement.classList.add("is-loaded"); });
-      setupReveal();
+      /* As entradas da abertura esperam a animação do logotipo terminar. */
+      (window.MamanuhIntro || Promise.resolve()).then(setupReveal);
       setupScroll();
       setupHeroPointer();
       setupLookFocus();

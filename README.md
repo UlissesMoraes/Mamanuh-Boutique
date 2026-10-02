@@ -17,6 +17,7 @@ python3 -m http.server 8000   # depois abra http://localhost:8000
 | `js/config.js` | **Tudo o que a boutique atualiza**: contatos, coleções, peças, looks, FAQ, mensagens |
 | `js/main.js` | Montagem das seções, filtros, painéis de detalhe, menu, WhatsApp |
 | `js/map.js` | Google Maps da seção "Visite a loja", com a foto da fachada como marcador |
+| `js/logo.js` | Monograma vetorial, abertura e animação de desenho do logotipo |
 | `js/motion.js` | Efeitos de movimento (decorativos; o site funciona sem eles) |
 | `css/styles.css` | Tokens e estilos (design system adaptado) |
 | `assets/img/` | Fotos em WebP, duas larguras (`-480`, `-900`) |
@@ -47,6 +48,14 @@ python3 -m http.server 8000   # depois abra http://localhost:8000
 - Filtros com transição e entrada em sequência das peças.
 - Nenhuma animação contínua. Com "reduzir movimento" ativo no sistema, tudo aparece no estado final.
 
+## Logotipo
+
+- O monograma "MM" foi redesenhado em vetor sobre o logotipo enviado (150 px), seguindo as linhas originais. Ele está em `js/logo.js` e em `assets/img/monograma.svg`.
+- Aparece no cabeçalho (grafite), no rodapé e no encerramento (cobre, com as cores do logotipo).
+- Abertura: o monograma é desenhado traço a traço, o nome aparece e a tela sobe como uma cortina. Dura cerca de 2 s, roda uma vez por sessão e é pulada com clique, toque ou tecla. Desligue com `intro: false`.
+- Ícone da aba (`favicon.svg`), do celular (`apple-touch-icon.png`) e imagem de compartilhamento (`og-image.jpg`).
+- Peça à boutique o arquivo vetorial original (SVG, PDF ou AI) para substituir o redesenho, se existir.
+
 ## Mapa
 
 - Google Maps incorporado (sem chave de API), centralizado em `contact.map.query`; só carrega quando a seção de visita se aproxima da tela.
@@ -63,7 +72,7 @@ O vinho da Orluxe é a cor de marca de outra empresa, então foi trocado por gra
 ## Antes de publicar
 
 - [x] Grafia oficial do nome: "Mamanuh Boutique" (letreiro da fachada)
-- [ ] Identidade visual: logotipo (`brand.logo`) e cores aprovadas
+- [x] Logotipo recebido (monograma redesenhado em vetor; pedir o arquivo original se houver)
 - [ ] Fotos autorizadas: peças, looks, loja ou equipe (fachada já recebida)
 - [ ] Catálogo real: categorias, peças, referências, cores, tamanhos, composição e preços (se forem divulgados)
 - [ ] Looks aprovados pela loja

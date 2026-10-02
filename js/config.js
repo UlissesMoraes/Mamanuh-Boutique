@@ -17,6 +17,9 @@ window.SITE = {
   /* Exibe a faixa "Proposta de demonstração" e as etiquetas de pendência. */
   demo: true,
 
+  /* Abertura com o monograma sendo desenhado (uma vez por sessão, pulável). */
+  intro: true,
+
   brand: {
     name: "Mamanuh Boutique",
     shortName: "Mamanuh",
@@ -25,7 +28,7 @@ window.SITE = {
     nameConfirmed: true,
     legalName: "Dandi Comércio de Vestuário e Acessórios Ltda.",
     segment: "Roupas e acessórios",
-    /* Arquivo do logotipo aprovado (ex.: "assets/img/logo.svg"). Sem logo, o nome é escrito em texto. */
+    /* O monograma vetorial fica em js/logo.js. Use este campo só para trocar por um arquivo de imagem. */
     logo: null
   },
 
