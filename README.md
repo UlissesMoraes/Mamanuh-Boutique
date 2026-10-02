@@ -15,7 +15,8 @@ python3 -m http.server 8000   # depois abra http://localhost:8000
 | --- | --- |
 | `index.html` | Estrutura das seções, SEO e dados estruturados |
 | `js/config.js` | **Tudo o que a boutique atualiza**: contatos, coleções, peças, looks, FAQ, mensagens |
-| `js/main.js` | Montagem das seções, filtros, painéis de detalhe, menu, WhatsApp, movimento |
+| `js/main.js` | Montagem das seções, filtros, painéis de detalhe, menu, WhatsApp |
+| `js/motion.js` | Efeitos de movimento (decorativos; o site funciona sem eles) |
 | `css/styles.css` | Tokens e estilos (design system adaptado) |
 | `assets/img/` | Fotos em WebP, duas larguras (`-480`, `-900`) |
 | `assets/fonts/` | Italiana e Poppins (licença OFL) |
@@ -34,6 +35,16 @@ python3 -m http.server 8000   # depois abra http://localhost:8000
 - `contact.instagram`: URL do perfil oficial. Enquanto `null`, nenhum link é criado e a pendência é sinalizada.
 - `contact.hours`, `contact.mapsUrl`, `about.paragraphs`, `faq[].answer`: preencher após aprovação.
 - `demo: false` remove a faixa de demonstração e as etiquetas "A confirmar".
+
+## Movimento
+
+- Títulos que sobem palavra por palavra, fotos reveladas em "cortina" e fio dos cabeçalhos que se desenha.
+- Parallax leve das fotos durante a rolagem, sem controlar a rolagem.
+- Cabeçalho que se recolhe ao descer e volta ao subir, com barra de progresso.
+- Com mouse: fotos da abertura reagem ao ponteiro, cursor "Ver peça", botões magnéticos e zoom na foto dos detalhes.
+- Looks: ao apontar ou focar uma peça na lista, a foto aproxima essa peça (`position` da imagem da peça).
+- Filtros com transição e entrada em sequência das peças.
+- Nenhuma animação contínua. Com "reduzir movimento" ativo no sistema, tudo aparece no estado final.
 
 ## Design system
 

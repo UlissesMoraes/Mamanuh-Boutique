@@ -137,8 +137,8 @@
   function renderCollections() {
     var root = $("[data-collections]");
     root.innerHTML = SITE.collections.map(function (col, i) {
-      return '<a class="collection reveal" href="#pecas" data-collection="' + esc(col.filter || "") + '">' +
-        '<figure class="collection-media reveal-media">' + imgTag(col.image, i === 0 ? "(min-width: 720px) 58vw, 100vw" : "(min-width: 720px) 40vw, 100vw") + refLabel(col.image) + "</figure>" +
+      return '<a class="collection reveal" href="#pecas" data-cursor="Ver coleção" data-collection="' + esc(col.filter || "") + '">' +
+        '<figure class="collection-media reveal-media" data-parallax="0.05">' + imgTag(col.image, i === 0 ? "(min-width: 720px) 58vw, 100vw" : "(min-width: 720px) 40vw, 100vw") + refLabel(col.image) + "</figure>" +
         '<span class="collection-body">' +
           '<span class="collection-name">' + esc(col.name) + (col.confirmed ? "" : pendingTag("Exemplo")) + "</span>" +
           '<span class="link-arrow" aria-hidden="true">Ver peças</span>' +
@@ -175,7 +175,7 @@
     grid.innerHTML = SITE.products.map(function (p) {
       var img = p.images && p.images[0];
       return '<li class="product-card reveal" data-category="' + esc(p.category || "") + '">' +
-        '<button class="product-open" type="button" data-product="' + esc(p.id) + '" aria-label="Ver detalhes: ' + esc(p.name) + '">' +
+        '<button class="product-open" type="button" data-cursor="Ver peça" data-product="' + esc(p.id) + '" aria-label="Ver detalhes: ' + esc(p.name) + '">' +
           '<span class="product-media reveal-media">' + (img ? imgTag(img, "(min-width: 1100px) 22vw, (min-width: 720px) 30vw, 46vw") + refLabel(img) : "") + "</span>" +
         "</button>" +
         '<div class="product-text">' +
@@ -214,29 +214,49 @@
     if (categories().indexOf(value) < 0) value = "";
     currentFilter = value;
     $$("[data-filter]").forEach(function (chip) { chip.setAttribute("aria-pressed", String(chip.getAttribute("data-filter") === value)); });
-    var shown = 0;
-    $$(".product-card").forEach(function (card) {
-      var match = !value || card.getAttribute("data-category") === value;
-      card.hidden = !match;
-      if (match) { shown++; card.classList.add("is-in"); $$(".reveal-media", card).forEach(function (m) { m.classList.add("is-in"); }); }
-    });
+    var cards = $$(".product-card");
+    var shown = cards.filter(function (card) { return !value || card.getAttribute("data-category") === value; }).length;
     $("[data-filter-status]").textContent = shown + (shown === 1 ? " peça" : " peças") + (value ? " em " + value : "");
+
+    var grid = $("[data-products]");
+    var apply = function () {
+      var i = 0;
+      cards.forEach(function (card) {
+        var match = !value || card.getAttribute("data-category") === value;
+        card.hidden = !match;
+        card.classList.remove("is-entering");
+        if (!match) return;
+        card.classList.add("is-in");
+        $$(".reveal-media", card).forEach(function (m) { m.classList.add("is-in"); });
+        card.style.setProperty("--i", i++);
+        void card.offsetWidth; /* reinicia a animação de entrada */
+        card.classList.add("is-entering");
+      });
+      grid.classList.remove("is-filtering");
+    };
+    if (reduceMotion.matches) { apply(); return; }
+    grid.classList.add("is-filtering");
+    clearTimeout(setFilter.timer);
+    setFilter.timer = setTimeout(apply, 220);
   }
 
   /* ---------- looks ---------- */
 
   function renderLooks() {
     var root = $("[data-looks]");
-    root.innerHTML = SITE.looks.map(function (look) {
+    root.innerHTML = SITE.looks.map(function (look, n) {
       var items = look.items.map(productById).filter(Boolean);
       return '<article class="look">' +
-        '<figure class="look-media reveal-media">' + imgTag(look.image, "(min-width: 840px) 50vw, 100vw") + refLabel(look.image) + "</figure>" +
+        '<figure class="look-media reveal-media" data-parallax="0.06" data-look-media data-cursor="Ver look">' + imgTag(look.image, "(min-width: 840px) 50vw, 100vw") + refLabel(look.image) + "</figure>" +
         '<div class="look-copy reveal">' +
+          '<p class="look-index" aria-hidden="true">' + String(n + 1).padStart(2, "0") + "</p>" +
           (look.ref ? '<p class="look-ref">' + esc(look.ref) + "</p>" : "") +
           '<h3 class="look-name">' + esc(look.name) + "</h3>" +
           '<p class="look-desc">' + esc(look.description) + "</p>" +
           '<ul class="look-items" aria-label="Peças deste look">' + items.map(function (p) {
-            return '<li><button class="look-item" type="button" data-product="' + esc(p.id) + '"><span>' + esc(p.name) + "</span><small>Ver detalhes</small></button></li>";
+            var focus = p.images && p.images[0] && p.images[0].file === look.image.file ? p.images[0].position : "";
+            return '<li><button class="look-item" type="button" data-product="' + esc(p.id) + '"' + (focus ? ' data-focus="' + esc(focus) + '"' : "") +
+              "><span>" + esc(p.name) + '</span><small>Ver detalhes <span aria-hidden="true">→</span></small></button></li>';
           }).join("") + "</ul>" +
           consultControl("Consultar este look", fill(SITE.messages.look, look.name + (look.ref ? " (" + look.ref + ")" : "")), "btn btn-primary") +
         "</div></article>";
@@ -266,7 +286,7 @@
     var html = '<button class="sheet-close" type="button" data-close aria-label="Fechar detalhes"></button>' +
       '<div class="detail">' +
         '<div class="detail-gallery">' +
-          (imgs[0] ? '<figure data-main-figure>' + imgTag(imgs[0], "(min-width: 720px) 480px, 100vw", { eager: true }) + refLabel(imgs[0]) + "</figure>" : "") +
+          (imgs[0] ? '<figure data-main-figure data-zoom>' + imgTag(imgs[0], "(min-width: 720px) 480px, 100vw", { eager: true }) + refLabel(imgs[0]) + "</figure>" : "") +
           (imgs.length > 1 ? '<div class="detail-thumbs" role="group" aria-label="Fotos da peça">' + imgs.map(function (im, i) {
             return '<button type="button" data-thumb="' + i + '" aria-current="' + (i === 0) + '" aria-label="Foto ' + (i + 1) + ' de ' + imgs.length + '">' + imgTag(im, "64px") + "</button>";
           }).join("") + "</div>" : (SITE.demo ? '<p class="note">Fotos adicionais aguardando a boutique.</p>' : "")) +
@@ -376,6 +396,7 @@
 
   function renderAbout() {
     var about = SITE.about;
+    $("[data-about-media]").setAttribute("data-parallax", "0.07");
     if (about.image) $("[data-about-media]").innerHTML = imgTag(about.image, "(min-width: 840px) 50vw, 100vw") + refLabel(about.image);
     $("[data-about-text]").innerHTML = about.paragraphs && about.paragraphs.length
       ? about.paragraphs.map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("")
@@ -441,25 +462,8 @@
   });
   window.matchMedia("(min-width: 960px)").addEventListener("change", function (mq) { if (mq.matches) closeMenu(false); });
 
-  function onScroll() { header.classList.toggle("is-scrolled", window.scrollY > 12); }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
 
   /* ---------- movimento e navegação ativa ---------- */
-
-  function setupReveal() {
-    var targets = $$(".reveal, .reveal-media");
-    if (!("IntersectionObserver" in window) || reduceMotion.matches) {
-      targets.forEach(function (el) { el.classList.add("is-in"); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add("is-in"); io.unobserve(entry.target); }
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    targets.forEach(function (el) { io.observe(el); });
-  }
 
   function setupActiveNav() {
     if (!("IntersectionObserver" in window)) return;
@@ -497,6 +501,8 @@
   renderInstagramGrid();
   renderFaq();
   setupConsultButtons();
-  setupReveal();
   setupActiveNav();
+
+  /* Efeitos de movimento (js/motion.js) depois que o conteúdo existe. */
+  if (window.MamanuhMotion) window.MamanuhMotion.init();
 })();

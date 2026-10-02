@@ -67,6 +67,8 @@
       </div>
     </div>
 
+    <div class="scroll-progress" aria-hidden="true"></div>
+
     <div class="menu-mobile" id="menu-mobile" hidden>
       <nav aria-label="Menu">
         <ul>
@@ -89,16 +91,16 @@
     <!-- 2. Abertura -->
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Roupas e acessórios · Itajaí</p>
-          <h1 class="hero-title" id="hero-title">Encontre seu próximo look.</h1>
+        <div class="hero-copy" data-reveal-group>
+          <p class="eyebrow hero-eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Roupas e acessórios · Itajaí</p>
+          <h1 class="hero-title" id="hero-title" data-split>Encontre seu próximo look.</h1>
           <p class="hero-text">Conheça as peças da Mamanuh Boutique e consulte a equipe sobre tamanhos e disponibilidade.</p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="#pecas">Explorar peças</a>
+            <a class="btn btn-primary" href="#pecas">Explorar peças <span class="btn-arrow" aria-hidden="true">→</span></a>
             <button class="btn btn-outline" type="button" data-consult="general">Falar com a boutique</button>
           </div>
         </div>
-        <figure class="hero-media hero-media-main reveal-media">
+        <figure class="hero-media hero-media-main reveal-media" data-depth="-10" data-parallax="0.06">
           <img src="assets/img/vestido-longo-off-white-900.webp"
                srcset="assets/img/vestido-longo-off-white-480.webp 480w, assets/img/vestido-longo-off-white-900.webp 602w"
                sizes="(min-width: 960px) 34vw, 70vw"
@@ -107,7 +109,7 @@
                alt="Mulher na boutique usando vestido longo claro de alças com saia em camadas">
           <figcaption class="ref-label" data-demo-only>Imagem de referência</figcaption>
         </figure>
-        <figure class="hero-media hero-media-aside reveal-media">
+        <figure class="hero-media hero-media-aside reveal-media" data-depth="16" data-parallax="0.12">
           <img src="assets/img/look-vestido-estampado-480.webp"
                width="480" height="852" loading="lazy" decoding="async"
                style="object-position: 50% 30%"
@@ -117,10 +119,20 @@
       </div>
     </section>
 
+    <!-- Faixa de informações (somente fatos e o processo de atendimento) -->
+    <section class="info-strip" aria-label="Como funciona">
+      <ul class="container info-grid stagger">
+        <li class="reveal"><span class="info-num">01</span><p><strong>Descubra</strong>Coleções, peças e looks da boutique.</p></li>
+        <li class="reveal"><span class="info-num">02</span><p><strong>Consulte</strong>Tamanhos, cores e disponibilidade com a equipe.</p></li>
+        <li class="reveal"><span class="info-num">03</span><p><strong>Visite</strong>Bairro São João, Itajaí.</p></li>
+      </ul>
+    </section>
+
     <!-- 3. Coleções em destaque -->
     <section class="section" id="colecoes" aria-labelledby="colecoes-title">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head">
+          <p class="section-index" aria-hidden="true">01</p>
           <h2 class="section-title" id="colecoes-title">Coleções</h2>
           <p class="section-intro">Categorias de exemplo. A organização final segue o catálogo real da boutique.</p>
         </div>
@@ -131,7 +143,8 @@
     <!-- 4. Catálogo -->
     <section class="section section-alt" id="pecas" aria-labelledby="pecas-title">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head">
+          <p class="section-index" aria-hidden="true">02</p>
           <h2 class="section-title" id="pecas-title">Peças</h2>
           <p class="section-intro">Consulte preço, tamanhos e disponibilidade diretamente com a equipe.</p>
         </div>
@@ -145,7 +158,8 @@
     <!-- 5. Looks -->
     <section class="section" id="looks" aria-labelledby="looks-title">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head">
+          <p class="section-index" aria-hidden="true">03</p>
           <h2 class="section-title" id="looks-title">Looks</h2>
           <p class="section-intro">Combinações para inspirar. Consulte a equipe sobre cada peça.</p>
         </div>
@@ -158,7 +172,7 @@
       <div class="container about-grid">
         <figure class="about-media reveal-media" data-about-media></figure>
         <div class="about-copy reveal">
-          <p class="eyebrow">Sobre a boutique</p>
+          <p class="eyebrow"><span class="eyebrow-num">04</span> Sobre a boutique</p>
           <h2 class="display-md" id="sobre-title">Mamanuh Boutique</h2>
           <div data-about-text></div>
           <dl class="facts">
@@ -173,7 +187,10 @@
     <section class="section" id="contato" aria-labelledby="contato-title">
       <div class="container visit-grid">
         <div class="visit-copy reveal">
-          <h2 class="section-title section-title-left" id="contato-title">Visite a loja</h2>
+          <div class="section-head section-head-compact">
+            <p class="section-index" aria-hidden="true">05</p>
+            <h2 class="section-title" id="contato-title">Visite a loja</h2>
+          </div>
           <dl class="contact-list">
             <div>
               <dt>Endereço</dt>
@@ -213,7 +230,8 @@
     <!-- Instagram -->
     <section class="section section-alt" id="instagram" aria-labelledby="instagram-title">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head">
+          <p class="section-index" aria-hidden="true">06</p>
           <h2 class="section-title" id="instagram-title">Acompanhe a boutique</h2>
           <p class="section-intro">Novidades e combinações no perfil oficial.</p>
         </div>
@@ -225,7 +243,8 @@
     <!-- 8. Perguntas frequentes -->
     <section class="section" id="perguntas" aria-labelledby="perguntas-title">
       <div class="container container-narrow">
-        <div class="section-head reveal">
+        <div class="section-head section-head-compact">
+          <p class="section-index" aria-hidden="true">07</p>
           <h2 class="section-title" id="perguntas-title">Perguntas frequentes</h2>
         </div>
         <div class="accordion reveal" data-faq></div>
@@ -234,10 +253,10 @@
 
     <!-- 9. Encerramento -->
     <section class="closing" aria-labelledby="closing-title">
-      <div class="container closing-inner reveal">
-        <h2 class="display-lg" id="closing-title">Gostou de uma peça?</h2>
-        <p>Converse com a equipe para consultar tamanhos, cores e disponibilidade.</p>
-        <button class="btn btn-inverse" type="button" data-consult="general">Falar com a boutique</button>
+      <div class="container closing-inner">
+        <h2 class="display-lg" id="closing-title" data-split>Gostou de uma peça?</h2>
+        <p class="reveal">Converse com a equipe para consultar tamanhos, cores e disponibilidade.</p>
+        <button class="btn btn-inverse reveal" type="button" data-consult="general">Falar com a boutique</button>
       </div>
     </section>
   </main>
@@ -302,6 +321,7 @@
   </dialog>
 
   <script src="js/config.js"></script>
+  <script src="js/motion.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
