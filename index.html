@@ -218,13 +218,16 @@
             <button class="btn btn-outline" type="button" data-consult="general">Falar com a boutique</button>
           </div>
         </div>
-        <figure class="visit-media reveal-media" data-parallax="0.05">
-          <img src="assets/img/fachada-480.webp"
+        <div class="visit-map reveal" data-map>
+          <div class="map-canvas" id="mapa" role="region" aria-label="Mapa com a localização da Mamanuh Boutique"></div>
+          <!-- Mostrada até o mapa carregar, ou no lugar dele se não carregar. -->
+          <img class="map-fallback" src="assets/img/fachada-480.webp"
                srcset="assets/img/fachada-480.webp 480w, assets/img/fachada-900.webp 645w"
                sizes="(min-width: 840px) 50vw, 100vw"
                width="645" height="607" loading="lazy" decoding="async"
                alt="Fachada da Mamanuh Boutique: vitrine de vidro com letreiro dourado e manequins com vestidos">
-        </figure>
+          <p class="map-note" data-map-note hidden></p>
+        </div>
       </div>
     </section>
 
@@ -289,7 +292,7 @@
     </div>
     <div class="container footer-base">
       <p>© <span data-year></span> Mamanuh Boutique. <span data-demo-only>Proposta de demonstração — conteúdo sujeito à aprovação.</span></p>
-      <p>Este site não usa cookies nem ferramentas de rastreamento e não coleta dados pessoais.</p>
+      <p>Este site não usa cookies nem ferramentas de rastreamento e não coleta dados pessoais. O mapa é carregado do OpenStreetMap/CARTO quando a seção de visita aparece na tela.</p>
     </div>
   </footer>
 
@@ -323,6 +326,7 @@
 
   <script src="js/config.js"></script>
   <script src="js/motion.js"></script>
+  <script src="js/map.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -47,6 +47,20 @@ window.SITE = {
     },
     /* Lista de horários confirmados. Ex.: [{ days: "Segunda a sexta", time: "9h às 19h" }] */
     hours: null,
+    /*
+     * Ponto do mapa. As coordenadas atuais são do complexo Bistek São João
+     * (Rua Heitor Liberato, 1550), não da loja 35 em si: por isso
+     * `confirmed: false` mantém o aviso "Localização aproximada".
+     */
+    map: {
+      lat: -26.9063432,
+      lng: -48.672717,
+      zoom: 16,
+      confirmed: false,
+      /* Foto usada como marcador (arquivo em assets/img, sem o sufixo -480/-900). */
+      photo: "fachada",
+      photoAlt: "Fachada da Mamanuh Boutique"
+    },
     /* Link de localização aprovado (ex.: perfil da loja no Google Maps). Sem ele, usa busca pelo endereço. */
     mapsUrl: null
   },
